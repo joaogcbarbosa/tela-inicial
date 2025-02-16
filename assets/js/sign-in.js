@@ -17,7 +17,7 @@ const clearForm = () => {
 
 const checkEmail = (e) => {
     const enteredEmail = e.target.value
-    const found = usersArray.some(u => u[1] === enteredEmail)
+    const found = usersArray.some(u => u[2] === enteredEmail)
 
     if (!found) {
         if (!emailDiv.contains(emailAlert)) {
@@ -33,7 +33,7 @@ const checkEmail = (e) => {
 const checkPassword = (e) => {
     e.preventDefault()
     const enteredPassword = password.value
-    const found = usersArray.some(u => u[2] === enteredPassword)
+    const found = usersArray.some(u => u[3] === enteredPassword)
     found ? alert("Logado") : alert("Senha incorreta")
     clearForm()
 }

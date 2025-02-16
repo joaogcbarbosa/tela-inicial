@@ -1,1 +1,1 @@
-export const usersArray = [[0, "joaogcb29@gmail.com", "123456"]]
+export const usersArray = [[0, "joaogcb", "joaogcb29@gmail.com", "123456"]]
