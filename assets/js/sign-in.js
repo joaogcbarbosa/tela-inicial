@@ -37,6 +37,8 @@ const checkUserInfo = (usersArrayColumn, e) => {
     } else if (infoDiv.contains(infoAlert)) {
         infoDiv.removeChild(infoAlert)
     }
+
+    entered.length === 0 ? infoDiv.removeChild(infoAlert) : null
 }
 
 const checkWhichField = e => e.target.id === email.id ? checkUserInfo(1, e) : checkUserInfo(2, e)
