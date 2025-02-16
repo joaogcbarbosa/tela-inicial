@@ -15,17 +15,21 @@ passwordAlert.style.color = "red"
 const checkUserInfo = (usersArrayColumn, e) => {
     let infoDiv
     let infoAlert
-    if (usersArrayColumn === 1) {
-        infoDiv = emailDiv
-        infoAlert = emailAlert
-    } else {
-        infoDiv = passwordDiv
-        infoAlert = passwordAlert
+
+    switch (usersArrayColumn) {
+        case(1):
+            infoDiv = emailDiv
+            infoAlert = emailAlert
+            break
+        case(2):
+            infoDiv = passwordDiv
+            infoAlert = passwordAlert
+            break
     }
 
     const entered = e.target.value
     const found = usersArray.some(u => u[usersArrayColumn] === entered)
-    
+
     if (!found) {
         if (!infoDiv.contains(infoAlert)) {
             infoDiv.appendChild(infoAlert)
