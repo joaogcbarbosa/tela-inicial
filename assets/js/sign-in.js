@@ -1,16 +1,13 @@
+import { usersArray } from "./local-storage.js"
+
 const email = document.querySelector("#email")
 const password = document.querySelector("#password")
 const emailDiv = document.querySelector("#email-div")
 const passwordDiv = document.querySelector("#password-div")
-const usersArray = [[0, "joaogcb29@gmail.com", "123456"]]
 
 const emailAlert = document.createElement("span")
 emailAlert.textContent = "Email não cadastrado"
 emailAlert.style.color = "red"
-
-const passwordAlert = document.createElement("span")
-passwordAlert.textContent = "Senha incorreta"
-passwordAlert.style.color = "red"
 
 const checkUserInfo = (usersArrayColumn, e) => {
     let infoDiv
