@@ -1,5 +1,6 @@
 import { usersArray } from "./local-storage.js"
 
+const signUpForm = document.querySelector("#sign-up-form")
 const username = document.querySelector("#username")
 const usernameDiv = document.querySelector("#username-div")
 const email = document.querySelector("#email")
@@ -41,6 +42,25 @@ const checkEmail = (e) => {
     }
 }
 
+const checkPasswordStrength = () => {
+
+}
+
+const checkPasswordConfirmation = () => {
+    const enteredPassword = passwordConfirmation.value
+}
+
+const clearForm = () => {
+    username.value = ""
+    email.value = ""
+    password.value = ""
+    passwordConfirmation.value = ""
+    username.focus()
+}
+
 // TODO: generic functios for both checkings
 username.addEventListener("input", checkUsername)
 email.addEventListener("input", checkEmail)
+password.addEventListener("input", checkPasswordStrength)
+passwordConfirmation.addEventListener("input", checkPasswordConfirmation)
+signUpForm.addEventListener("submit", clearForm)
