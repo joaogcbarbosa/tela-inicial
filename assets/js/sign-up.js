@@ -41,5 +41,6 @@ const checkEmail = (e) => {
     }
 }
 
+// TODO: generic functios for both checkings
 username.addEventListener("input", checkUsername)
 email.addEventListener("input", checkEmail)
