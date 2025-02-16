@@ -9,10 +9,14 @@
     <h1>MemeMate</h1>
     <h3>Crie sua conta</h3>
     <form id="sign-up-form">
-        <label for="username">Nome de usuário</label><br>
-        <input type="text" id="username" name="username" placeholder="Insira o nome de usuário" required><br>
-        <label for="email">Email</label><br>
-        <input type="text" id="email" name="email" placeholder="Insira o seu email" required><br>
+        <div id="username-div">
+            <label for="username">Nome de usuário</label><br>
+            <input type="text" id="username" name="username" placeholder="Insira o nome de usuário" required><br>
+        </div>
+        <div id="email-div">
+            <label for="email">Email</label><br>
+            <input type="text" id="email" name="email" placeholder="Insira o seu email" required><br>
+        </div>
         <label for="password">Crie a sua senha</label><br>
         <input type="text" id="password" name="password" placeholder="Insira uma senha segura" required><br>
         <label for="password-confirmation">Senha</label><br>
@@ -21,6 +25,6 @@
     </form>
     <span>Já tem uma conta?</span>
     <a href="./sign-in.html">Entre</a>
-    <script src="../assets/js/sign-up.js"></script>
+    <script type="module" src="../assets/js/sign-up.js"></script>
 </body>
 </html>
