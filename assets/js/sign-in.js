@@ -38,6 +38,5 @@ const checkPassword = (e) => {
     clearForm()
 }
 
-// TODO: try to use querySelectorAll so as to not use div for email
 email.addEventListener("input", checkEmail)
 signInForm.addEventListener("submit", checkPassword)
