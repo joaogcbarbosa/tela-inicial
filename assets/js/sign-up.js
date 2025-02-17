@@ -6,6 +6,7 @@ const usernameDiv = document.querySelector("#username-div")
 const email = document.querySelector("#email")
 const emailDiv = document.querySelector("#email-div")
 const password = document.querySelector("#password")
+const passwordDiv = document.querySelector("#password-div")
 const passwordConfirmation = document.querySelector("#password-confirmation")
 
 const usernameAlert = document.createElement("span")
@@ -15,6 +16,10 @@ usernameAlert.style.color = "red"
 const emailAlert = document.createElement("span")
 emailAlert.textContent = "Email já cadastrado"
 emailAlert.style.color = "red"
+
+const passwordStrengthAlert = document.createElement("span")
+passwordStrengthAlert.textContent = "Senha fraca"
+passwordStrengthAlert.style.color = "red"
 
 const checkUsername = (e) => {
     const enteredUsername = e.target.value
@@ -42,8 +47,18 @@ const checkEmail = (e) => {
     }
 }
 
-const checkPasswordStrength = () => {
+const checkPasswordStrength = (e) => {
+    const enteredPassword = e.target.value
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$/
+    if (!regex.test(enteredPassword)) {
+        if (!passwordDiv.contains(passwordStrengthAlert)) {
+            passwordDiv.appendChild(passwordStrengthAlert)
+        }
+    } else if (passwordDiv.contains(passwordStrengthAlert)) {
+        passwordDiv.removeChild(passwordStrengthAlert)
+    }
 
+    enteredPassword.length === 0 ? passwordDiv.removeChild(passwordStrengthAlert) : null
 }
 
 const checkPasswordConfirmation = () => {
