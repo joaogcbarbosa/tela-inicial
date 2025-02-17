@@ -26,7 +26,10 @@ const passwordConfirmationAlert = document.createElement("span")
 passwordConfirmationAlert.textContent = "As senhas inseridas devem ser iguais"
 passwordConfirmationAlert.style.color = "red"
 
-const checkUsername = (e) => {
+let userId = 0
+const ALERT_TAG_NAME = "SPAN"
+
+const checkUsername = e => {
     const enteredUsername = e.target.value
     const found = usersArray.some(u => u[1] === enteredUsername)
 
@@ -39,7 +42,7 @@ const checkUsername = (e) => {
     }
 }
 
-const checkEmail = (e) => {
+const checkEmail = e => {
     const enteredEmail = e.target.value
     const found = usersArray.some(u => u[2] === enteredEmail)
 
@@ -50,9 +53,11 @@ const checkEmail = (e) => {
     } else if (emailDiv.contains(emailAlert)) {
         emailDiv.removeChild(emailAlert)
     }
+
+    enteredEmail.length === 0 ? emailDiv.removeChild(emailAlert) : null
 }
 
-const checkPasswordStrength = (e) => {
+const checkPasswordStrength = e => {
     const enteredPassword = e.target.value
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$/
     if (!regex.test(enteredPassword)) {
@@ -88,9 +93,28 @@ const clearForm = () => {
     username.focus()
 }
 
-// TODO: generic functios for both checkings
+const signUpUser = e => {
+    e.preventDefault()
+    const allDivsChildren = [
+        ...usernameDiv.children,
+        ...emailDiv.children,
+        ...passwordDiv.children,
+        ...passwordConfirmationDiv.children,
+    ]
+    const alertPresent = allDivsChildren.some(c => c.tagName === ALERT_TAG_NAME)
+
+    if (alertPresent) {
+        alert("Campo(s) não preenchido(s) corretamente")
+    } else {
+        usersArray.push([userId, username.value, email.value, password.value])
+        userId++
+        alert("Usuário cadastrado!")
+    }
+    clearForm()
+}
+
 username.addEventListener("input", checkUsername)
 email.addEventListener("input", checkEmail)
 password.addEventListener("input", checkPasswordStrength)
 passwordConfirmation.addEventListener("input", checkPasswordConfirmation)
-signUpForm.addEventListener("submit", clearForm)
+signUpForm.addEventListener("submit", signUpUser)
