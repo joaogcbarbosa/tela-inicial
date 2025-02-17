@@ -13,7 +13,7 @@ const clearForm = () => {
     email.focus()
 }
 
-const checkEmail = (e) => {
+const checkEmail = e => {
     const enteredEmail = e.target.value
     const usersArray = JSON.parse(localStorage.getItem("usersArray"))
     const found = usersArray.some(u => u[2] === enteredEmail)
@@ -29,7 +29,7 @@ const checkEmail = (e) => {
     enteredEmail.length === 0 ? emailDiv.removeChild(emailAlert) : null
 }
 
-const checkPassword = (e) => {
+const checkPassword = e => {
     e.preventDefault()
     const enteredPassword = password.value
     const usersArray = JSON.parse(localStorage.getItem("usersArray"))
