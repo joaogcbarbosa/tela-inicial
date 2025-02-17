@@ -1,5 +1,3 @@
-import { usersArray } from "./local-storage.js"
-
 const signUpForm = document.querySelector("#sign-up-form")
 const username = document.querySelector("#username")
 const usernameDiv = document.querySelector("#username-div")
@@ -31,6 +29,7 @@ const ALERT_TAG_NAME = "SPAN"
 
 const checkUsername = e => {
     const enteredUsername = e.target.value
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"))
     const found = usersArray.some(u => u[1] === enteredUsername)
 
     if (found) {
@@ -44,6 +43,7 @@ const checkUsername = e => {
 
 const checkEmail = e => {
     const enteredEmail = e.target.value
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"))
     const found = usersArray.some(u => u[2] === enteredEmail)
 
     if (found) {
@@ -106,7 +106,9 @@ const signUpUser = e => {
     if (alertPresent) {
         alert("Campo(s) não preenchido(s) corretamente")
     } else {
+        let usersArray = JSON.parse(localStorage.getItem("usersArray"))
         usersArray.push([userId, username.value, email.value, password.value])
+        localStorage.setItem("usersArray", JSON.stringify(usersArray))
         userId++
         alert("Usuário cadastrado!")
     }

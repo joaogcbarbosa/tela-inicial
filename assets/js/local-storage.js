@@ -1,1 +1,1 @@
-export const usersArray = []
+localStorage.setItem("usersArray", JSON.stringify([]))

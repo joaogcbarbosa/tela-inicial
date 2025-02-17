@@ -1,5 +1,3 @@
-import { usersArray } from "./local-storage.js"
-
 const email = document.querySelector("#email")
 const password = document.querySelector("#password")
 const emailDiv = document.querySelector("#email-div")
@@ -17,6 +15,7 @@ const clearForm = () => {
 
 const checkEmail = (e) => {
     const enteredEmail = e.target.value
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"))
     const found = usersArray.some(u => u[2] === enteredEmail)
 
     if (!found) {
@@ -33,6 +32,7 @@ const checkEmail = (e) => {
 const checkPassword = (e) => {
     e.preventDefault()
     const enteredPassword = password.value
+    const usersArray = JSON.parse(localStorage.getItem("usersArray"))
     const found = usersArray.some(u => u[3] === enteredPassword)
     found ? alert("Logado") : alert("Senha incorreta")
     clearForm()
