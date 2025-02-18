@@ -29,14 +29,29 @@ const checkEmail = e => {
     enteredEmail.length === 0 ? emailDiv.removeChild(emailAlert) : null
 }
 
-const checkPassword = e => {
-    e.preventDefault()
+const checkEmailInserted = () => {
+    if (email.value === "") {
+        alert("Preencha primeiro o campo de email")
+        clearForm()
+    }
+}
+
+const checkPassword = () => {
+    const passwordOwnersEmail = email.value
     const enteredPassword = password.value
     const usersArray = JSON.parse(localStorage.getItem("usersArray"))
-    const found = usersArray.some(u => u[3] === enteredPassword)
-    found ? alert("Logado") : alert("Senha incorreta")
+    const userInfo = usersArray.find(u => u[2] === passwordOwnersEmail)
+    userInfo && userInfo[3] === enteredPassword 
+    ? alert("Logado") 
+    : alert("Senha incorreta ou usuário não encontrado")
+}
+
+const submit = e => {
+    e.preventDefault()
+    checkPassword()
     clearForm()
 }
 
 email.addEventListener("input", checkEmail)
-signInForm.addEventListener("submit", checkPassword)
+password.addEventListener("input", checkEmailInserted)
+signInForm.addEventListener("submit", submit)
