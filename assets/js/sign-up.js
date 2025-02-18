@@ -39,6 +39,8 @@ const checkUsername = e => {
     } else if (usernameDiv.contains(usernameAlert)) {
         usernameDiv.removeChild(usernameAlert)
     }
+
+    enteredUsername.length === 0 ? usernameDiv.removeChild(usernameAlert) : null
 }
 
 const checkEmail = e => {
